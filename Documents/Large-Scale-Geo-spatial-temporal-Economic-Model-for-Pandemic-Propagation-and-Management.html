@@ -1,0 +1,140 @@
+<h1 id="large-scale-geo-spatial-temporal-economic-model-for-pandemic-propagation-and-management">Large Scale Geo-spatial-temporal Economic Model for Pandemic Propagation and Management</h1>
+<p><strong>Analysis for Spain</strong></p>
+<p><strong>Version 0.3</strong></p>
+<p>Anton Antonov</p>
+<p>Jorge Mateu</p>
+<p>April 2020</p>
+<h2 id="in-brief">In brief</h2>
+<p>The challenges brought forward COVID-19 showed that it is very difficult to make a decision about what are the optimal policies for managing epidemics and pandemics effects.</p>
+<p>The evolving of epidemics and pandemics evolving at exponential rates require the ability to make quick, reliable decisions. Days can make all the difference. The health system is unprepared and will be overwhelmed.</p>
+<p>In order to develop such a system we need a simulation tool to estimate the spread of the coronavirus in a given country or continent.</p>
+<p>In this project, we consider:</p>
+<ol type="1">
+<li><p>How can we predict the spread of COVID-19 in Spain and the effects of various related (government) measures?</p></li>
+<li><p>We want to:</p>
+<ol type="1">
+<li><p>the simulate the evolutions of the populations of infected, deceased, healthy people, and</p></li>
+<li><p>assess the economic impact of the various policies (like quarantine programmes.)</p></li>
+</ol></li>
+</ol>
+<p>The project further extends and develops a framework for simulations with epidemiological models for multiple sites, [AAr1].</p>
+<h2 id="details">Details</h2>
+<h3 id="the-big-picture">The big picture</h3>
+<p>The main purpose of the designed epidemic-economy modeling framework is to have the ability to do multiple, systematic simulations for different scenario play-outs over large scale geographical regions. The target end-users are decision makers at government level and researchers of pandemic or other large scale epidemic effects.</p>
+<p>Here is a diagram that shows the envisioned big picture workflow:</p>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1p8vyt3hdqzxe.png" alt="1p8vyt3hdqzxe" /><figcaption>1p8vyt3hdqzxe</figcaption>
+</figure>
+<h3 id="large-scale-modeling">Large-scale modeling</h3>
+<p>The standard classical compartmental epidemiology models are not adequate over large geographical areas, like, countries. We use a special software framework that allows large scale simulations using a simple principle workflow:</p>
+<ol type="1">
+<li><p>Develop a <strong>single-site model</strong> for relatively densely population geographics area for which the assumptions of the classical models hold.</p></li>
+<li><p>Extend the single-site model into a large-scale <strong>multi-site model</strong> using statistically derived traveling patterns; see [AA3].</p></li>
+<li><p>Data feed the multi-site model using appropriately prepared data.</p></li>
+<li><p>Run multiple simulations to see large scale implications of different policies.</p></li>
+</ol>
+<h3 id="input-data">Input data</h3>
+<p>The input data is separated into the following classes:</p>
+<ul>
+<li><p>Population data</p></li>
+<li><p>Contagious disease data (infected, deceased, recovered)</p></li>
+<li><p>Traveling patterns data (air, land, sea)</p></li>
+<li><p>Resources data (availability, production, delivery)</p></li>
+<li><p>Policies data (modeling parameter values)</p></li>
+</ul>
+<h3 id="single-site-epidemiology-compartmental-models">Single-site Epidemiology Compartmental Models</h3>
+<p>We have a collection of single-site models that have different properties and different modeling goals, [AAp1, AA6, AA7]. Here is as diagram of a single-site model that includes hospital beds and medical supplies as limitation resources, [AA7]:</p>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1l3fux9ehyvkg.png" alt="1l3fux9ehyvkg" /><figcaption>1l3fux9ehyvkg</figcaption>
+</figure>
+<p>Here are the equations of one the epidemiology compartmental models, SEI2HR, [AA6], implemented in [AAp1]:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode mathematica"><code class="sourceCode mathematica"><a class="sourceLine" id="cb1-1" title="1">ModelGridTableForm[SEI2HRModel[<span class="fu">t</span>], &quot;Tooltips&quot; -&gt; <span class="fu">False</span>][&quot;Equations&quot;] /. {<span class="dt">eq_</span>Equal :&gt; <span class="fu">TraditionalForm</span>[eq]}</a></code></pre></div>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1crww1x47gzjq.png" alt="1crww1x47gzjq" /><figcaption>1crww1x47gzjq</figcaption>
+</figure>
+<h3 id="models-combination">Models combination</h3>
+<p>Initially we developed two models an Epidemiology Compartmental Model (ECM) and Economy Input-Output Model (EIOM). Each model can be used separately, but we very interested in their modeling power and results of their combination.</p>
+<p>The following diagram shows the envisioned combination of ECM and EIOM:</p>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1lbkpj0pbepe9.png" alt="1lbkpj0pbepe9" /><figcaption>1lbkpj0pbepe9</figcaption>
+</figure>
+<p>Here is a list model properties and observations of the approach we take:</p>
+<ul>
+<li><p>The epidemiology compartmental models have resources limitations (availability, production, delivery) baked-in.</p></li>
+<li><p>Therefore the epidemiology model have an intrinsic economic facet.</p></li>
+<li><p>For large scale economy implications though a separate dedicated economy model have to be developed and combined together with epidemiology model.</p></li>
+<li><p>Instead of combining the epidemiology and economy models a simple, modular manner (as shown in the diagram above) we have to consider possible more entwined combinations.</p></li>
+</ul>
+<h3 id="modeling-paradigms">Modeling paradigms</h3>
+<h4 id="epidemiology-compartmental-models">Epidemiology compartmental models</h4>
+<p>The single-site models are based on compartmental epidemiology models, [Wk1, HH1], and System Dynamics, [Wk3, JS1, BC1].</p>
+<h4 id="economy-models">Economy models</h4>
+<p>The economy models are based on the Input-Output Model, [Wk4, WL1, WL2].</p>
+<h3 id="expected-outputs">Expected outputs</h3>
+<h4 id="single-runs">Single runs</h4>
+<p>The single-site models can be studied and analyzed through dedicated workflows and related dashboards; see [AA2, AA6, AA7].</p>
+<p>We also provide Application Programming Interface (API) that allows of simple, legible model computations specification (data and parameters); see [AA8].</p>
+<h4 id="scenario-play-outs">Scenario play-outs</h4>
+<p>The framework allows multiple executions and storage of results. This is most important functionality of the framework that allows the simulation and evaluation of different scenarios and polices.</p>
+<h2 id="output-examples">Output examples</h2>
+<h3 id="simulation-grid">Simulation grid</h3>
+<p>Land travel and air travel (Spain only):</p>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1fu7putp8n9yt.png" alt="1fu7putp8n9yt" /><figcaption>1fu7putp8n9yt</figcaption>
+</figure>
+<h3 id="simulation-results-over-whole-of-spain">Simulation results over whole of Spain</h3>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1poq73kiqeg21.png" alt="1poq73kiqeg21" /><figcaption>1poq73kiqeg21</figcaption>
+</figure>
+<h3 id="simulation-results-for-specified-geo-areas">Simulation results for specified geo-areas</h3>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/0hwm8lc5vc7uq.png" alt="0hwm8lc5vc7uq" /><figcaption>0hwm8lc5vc7uq</figcaption>
+</figure>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/08g34ulndgtcj.png" alt="08g34ulndgtcj" /><figcaption>08g34ulndgtcj</figcaption>
+</figure>
+<h3 id="d-and-2d-plots-combination">3D and 2D plots combination</h3>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/01hup14nizlrl.png" alt="01hup14nizlrl" /><figcaption>01hup14nizlrl</figcaption>
+</figure>
+<h2 id="visual-aids">Visual aids</h2>
+<h3 id="multi-layered-model">Multi-layered model</h3>
+<p>Here is a visual aid for the manner in which we plan to utilize data and models:</p>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1a851nkfp7mdf.png" alt="1a851nkfp7mdf" /><figcaption>1a851nkfp7mdf</figcaption>
+</figure>
+<h3 id="simulation-grid-over-spain">Simulation grid over Spain</h3>
+<p>A more detailed interactive modeling map:</p>
+<figure>
+<img src="https://github.com/mateu-uji/Anton-Covid19/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/0w1j2f4731hvb.png" alt="0w1j2f4731hvb" /><figcaption>0w1j2f4731hvb</figcaption>
+</figure>
+<h2 id="references">References</h2>
+<h3 id="articles-books">Articles, books</h3>
+<p>[Wk1] Wikipedia entry, <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology">“Compartmental models in epidemiology”</a>.</p>
+<p>[Wk2] Wikipedia entry, <a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019">“Coronavirus disease 2019”</a>.</p>
+<p>[Wk3] Wikipedia entry, <a href="https://en.wikipedia.org/wiki/System_dynamics">“System dynamics”</a>.</p>
+<p>[Wk4] Wikipedia entry, <a href="https://en.wikipedia.org/wiki/Inputâoutput_model">“Input–output model”</a>.</p>
+<p>[HH1] Herbert W. Hethcote, <a href="http://leonidzhukov.net/hse/2014/socialnetworks/papers/2000SiamRev.pdf">“The Mathematics of Infectious Diseases”,</a>(2000), SIAM Review. 42 (4): 599–653. Bibcode:2000SIAMR..42..599H. doi:10.1137/s0036144500371907.</p>
+<p>[JS1] John D.Sterman, Business Dynamics: Systems Thinking and Modeling for a Complex World. (2000), New York: McGraw.</p>
+<p>[BC1] Lucia Breierova, Mark Choudhari, <a href="https://ocw.mit.edu/courses/sloan-school-of-management/15-988-system-dynamics-self-study-fall-1998-spring-1999/readings/sensitivityanalysis.pdf">An Introduction to Sensitivity Analysis</a>, (1996), Massachusetts Institute of Technology.</p>
+<p>[WL1] Wassily W. Leontief, Input–Output Economics. 2nd ed., (1986), New York: Oxford University Press.</p>
+<p>[WL2] Wassily W. Leontief, The Structure of the U.S. Economy, (1965), Scientific American.</p>
+<p>[AA1] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/Coronavirus-propagation-modeling-considerations.md">“Coronavirus propagation modeling considerations”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AA2] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/Basic-experiments-workflow-for-simple-epidemiological-models.md">“Basic experiments workflow for simple epidemiological models”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AA3] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/Scaling-of-epidemiology-models-with-multi-site-compartments.md">“Scaling of Epidemiology Models with Multi-site Compartments”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AA4] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/WirVsVirus-hackathon-Multi-site-SEI2R-over-a-hexagonal-grid-graph.md">“WirVsVirus hackathon multi-site SEI2R over a hexagonal grid graph”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AA5] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/NYTimes-COVID-19-data-visualization.md">“NY Times COVID-19 data visualization”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AA6] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/SEI2HR-model-with-quarantine-scenarios.md">“SEI2HR model with quarantine scenarios”</a><a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/Scaling-of-epidemiology-models-with-multi-site-compartments.md">,</a>(2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AA7] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/Documents/SEI2HR-Econ-model-with-quarantine-and-supplies-scenarios.md">“SEI2HR-Econ model with quarantine and supplies scenarios”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AA8] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/WL-notebooks/Epidemiology-Compartmental-Modeling-Monad-Demo.nb">“Epidemiology Compartmental Modeling Monad Demo”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<h3 id="repositories-packages">Repositories, packages</h3>
+<p>[WRI1] Wolfram Research, Inc., <a href="https://www.wolframcloud.com/obj/resourcesystem/published/DataRepository/resources/Epidemic-Data-for-Novel-Coronavirus-COVID-19">“Epidemic Data for Novel Coronavirus COVID-19”</a>, <a href="https://www.wolframcloud.com">WolframCloud</a>.</p>
+<p>[WRI2] Wolfram Research Inc., <a href="https://github.com/antononcube/SystemModeling/blob/master/Data/dfUSACountyRecords.csv">USA county records</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">System Modeling at GitHub</a>.</p>
+<p>[NYT1] The New York Times, <a href="https://github.com/nytimes/covid-19-data">Coronavirus (Covid-19) Data in the United States</a>, (2020), GitHub.</p>
+<p>[AAr1] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/tree/master/Projects/Coronavirus-propagation-dynamics">Coronavirus propagation dynamics project</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AAp1] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/WL/EpidemiologyModels.m">“Epidemiology models Mathematica package”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AAp2] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/WL/EpidemiologyModelModifications.m">“Epidemiology models modifications Mathematica package”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AAp3] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/WL/EpidemiologyModelingVisualizationFunctions.m">“Epidemiology modeling visualization functions Mathematica package”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AAp4] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/WL/SystemDynamicsInteractiveInterfacesFunctions.m">“System dynamics interactive interfaces functions Mathematica package”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AAp5] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/WL/MultiSiteModelSimulation.m">“Multi-site model simulation Mathematica package”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
+<p>[AAp6] Anton Antonov, <a href="https://github.com/antononcube/SystemModeling/blob/master/Projects/Coronavirus-propagation-dynamics/WL/MonadicEpidemiologyCompartmentalModeling.m">“Monadic Epidemiology Compartmental Modeling Mathematica package”</a>, (2020), <a href="https://github.com/antononcube/SystemModeling">SystemModeling at GitHub</a>.</p>
