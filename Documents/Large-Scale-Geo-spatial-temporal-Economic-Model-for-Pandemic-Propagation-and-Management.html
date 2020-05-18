@@ -23,7 +23,7 @@
 <p>The main purpose of the designed epidemic-economy modeling framework is to have the ability to do multiple, systematic simulations for different scenario play-outs over large scale geographical regions. The target end-users are decision makers at government level and researchers of pandemic or other large scale epidemic effects.</p>
 <p>Here is a diagram that shows the envisioned big picture workflow:</p>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1p8vyt3hdqzxe.png" alt="1p8vyt3hdqzxe" /><figcaption>1p8vyt3hdqzxe</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1p8vyt3hdqzxe.png" alt="1p8vyt3hdqzxe" /><figcaption>1p8vyt3hdqzxe</figcaption>
 </figure>
 <h3 id="large-scale-modeling">Large-scale modeling</h3>
 <p>The standard classical compartmental epidemiology models are not adequate over large geographical areas, like, countries. We use a special software framework that allows large scale simulations using a simple principle workflow:</p>
@@ -45,18 +45,18 @@
 <h3 id="single-site-epidemiology-compartmental-models">Single-site Epidemiology Compartmental Models</h3>
 <p>We have a collection of single-site models that have different properties and different modeling goals, [AAp1, AA6, AA7]. Here is as diagram of a single-site model that includes hospital beds and medical supplies as limitation resources, [AA7]:</p>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1l3fux9ehyvkg.png" alt="1l3fux9ehyvkg" /><figcaption>1l3fux9ehyvkg</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1l3fux9ehyvkg.png" alt="1l3fux9ehyvkg" /><figcaption>1l3fux9ehyvkg</figcaption>
 </figure>
 <p>Here are the equations of one the epidemiology compartmental models, SEI2HR, [AA6], implemented in [AAp1]:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode mathematica"><code class="sourceCode mathematica"><a class="sourceLine" id="cb1-1" title="1">ModelGridTableForm[SEI2HRModel[<span class="fu">t</span>], &quot;Tooltips&quot; -&gt; <span class="fu">False</span>][&quot;Equations&quot;] /. {<span class="dt">eq_</span>Equal :&gt; <span class="fu">TraditionalForm</span>[eq]}</a></code></pre></div>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1crww1x47gzjq.png" alt="1crww1x47gzjq" /><figcaption>1crww1x47gzjq</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1crww1x47gzjq.png" alt="1crww1x47gzjq" /><figcaption>1crww1x47gzjq</figcaption>
 </figure>
 <h3 id="models-combination">Models combination</h3>
 <p>Initially we developed two models an Epidemiology Compartmental Model (ECM) and Economy Input-Output Model (EIOM). Each model can be used separately, but we very interested in their modeling power and results of their combination.</p>
 <p>The following diagram shows the envisioned combination of ECM and EIOM:</p>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1lbkpj0pbepe9.png" alt="1lbkpj0pbepe9" /><figcaption>1lbkpj0pbepe9</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1lbkpj0pbepe9.png" alt="1lbkpj0pbepe9" /><figcaption>1lbkpj0pbepe9</figcaption>
 </figure>
 <p>Here is a list model properties and observations of the approach we take:</p>
 <ul>
@@ -80,33 +80,33 @@
 <h3 id="simulation-grid">Simulation grid</h3>
 <p>Land travel and air travel (Spain only):</p>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1fu7putp8n9yt.png" alt="1fu7putp8n9yt" /><figcaption>1fu7putp8n9yt</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1fu7putp8n9yt.png" alt="1fu7putp8n9yt" /><figcaption>1fu7putp8n9yt</figcaption>
 </figure>
 <h3 id="simulation-results-over-whole-of-spain">Simulation results over whole of Spain</h3>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1poq73kiqeg21.png" alt="1poq73kiqeg21" /><figcaption>1poq73kiqeg21</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1poq73kiqeg21.png" alt="1poq73kiqeg21" /><figcaption>1poq73kiqeg21</figcaption>
 </figure>
 <h3 id="simulation-results-for-specified-geo-areas">Simulation results for specified geo-areas</h3>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/0hwm8lc5vc7uq.png" alt="0hwm8lc5vc7uq" /><figcaption>0hwm8lc5vc7uq</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/0hwm8lc5vc7uq.png" alt="0hwm8lc5vc7uq" /><figcaption>0hwm8lc5vc7uq</figcaption>
 </figure>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/08g34ulndgtcj.png" alt="08g34ulndgtcj" /><figcaption>08g34ulndgtcj</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/08g34ulndgtcj.png" alt="08g34ulndgtcj" /><figcaption>08g34ulndgtcj</figcaption>
 </figure>
 <h3 id="d-and-2d-plots-combination">3D and 2D plots combination</h3>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/01hup14nizlrl.png" alt="01hup14nizlrl" /><figcaption>01hup14nizlrl</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/01hup14nizlrl.png" alt="01hup14nizlrl" /><figcaption>01hup14nizlrl</figcaption>
 </figure>
 <h2 id="visual-aids">Visual aids</h2>
 <h3 id="multi-layered-model">Multi-layered model</h3>
 <p>Here is a visual aid for the manner in which we plan to utilize data and models:</p>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1a851nkfp7mdf.png" alt="1a851nkfp7mdf" /><figcaption>1a851nkfp7mdf</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/1a851nkfp7mdf.png" alt="1a851nkfp7mdf" /><figcaption>1a851nkfp7mdf</figcaption>
 </figure>
 <h3 id="simulation-grid-over-spain">Simulation grid over Spain</h3>
 <p>A more detailed interactive modeling map:</p>
 <figure>
-<img src="https://github.com/mateu-uji/Mateu-Anton/raw/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/0w1j2f4731hvb.png" alt="0w1j2f4731hvb" /><figcaption>0w1j2f4731hvb</figcaption>
+<img src="https://raw.githubusercontent.com/mateu-uji/Mateu-Anton/master/Documents/Diagrams/Large-Scale-Geo-spatial-temporal-Economic-Model-for-Pandemic-Propagation-and-Management/0w1j2f4731hvb.png" alt="0w1j2f4731hvb" /><figcaption>0w1j2f4731hvb</figcaption>
 </figure>
 <h2 id="references">References</h2>
 <h3 id="articles-books">Articles, books</h3>
